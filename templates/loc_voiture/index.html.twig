@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LocVoiture index{% endblock %}
+
+{% block body %}
+    <h1>LocVoiture index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateRes</th>
+                <th>DureeRes</th>
+                <th>Remise</th>
+                <th>TauxRemise</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for loc_voiture in loc_voitures %}
+            <tr>
+                <td>{{ loc_voiture.id }}</td>
+                <td>{{ loc_voiture.dateRes ? loc_voiture.dateRes|date('Y-m-d') : '' }}</td>
+                <td>{{ loc_voiture.dureeRes }}</td>
+                <td>{{ loc_voiture.remise ? 'Yes' : 'No' }}</td>
+                <td>{{ loc_voiture.tauxRemise }}</td>
+                <td>
+                    <a href="{{ path('loc_voiture_show', {'id': loc_voiture.id}) }}">show</a>
+                    <a href="{{ path('loc_voiture_edit', {'id': loc_voiture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('loc_voiture_new') }}">Create new</a>
+{% endblock %}

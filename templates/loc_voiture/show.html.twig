@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LocVoiture{% endblock %}
+
+{% block body %}
+    <h1>LocVoiture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ loc_voiture.id }}</td>
+            </tr>
+            <tr>
+                <th>DateRes</th>
+                <td>{{ loc_voiture.dateRes ? loc_voiture.dateRes|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DureeRes</th>
+                <td>{{ loc_voiture.dureeRes }}</td>
+            </tr>
+            <tr>
+                <th>Remise</th>
+                <td>{{ loc_voiture.remise ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>TauxRemise</th>
+                <td>{{ loc_voiture.tauxRemise }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('loc_voiture_index') }}">back to list</a>
+
+    <a href="{{ path('loc_voiture_edit', {'id': loc_voiture.id}) }}">edit</a>
+
+    {{ include('loc_voiture/_delete_form.html.twig') }}
+{% endblock %}

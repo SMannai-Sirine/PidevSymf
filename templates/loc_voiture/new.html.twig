@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LocVoiture{% endblock %}
+
+{% block body %}
+    <h1>Create new LocVoiture</h1>
+
+    {{ include('loc_voiture/_form.html.twig') }}
+
+    <a href="{{ path('loc_voiture_index') }}">back to list</a>
+{% endblock %}

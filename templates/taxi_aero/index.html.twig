@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TaxiAero index{% endblock %}
+
+{% block body %}
+    <h1>TaxiAero index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Heure</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for taxi_aero in taxi_aeros %}
+            <tr>
+                <td>{{ taxi_aero.id }}</td>
+                <td>{{ taxi_aero.heure }}</td>
+                <td>
+                    <a href="{{ path('taxi_aero_show', {'id': taxi_aero.id}) }}">show</a>
+                    <a href="{{ path('taxi_aero_edit', {'id': taxi_aero.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('taxi_aero_new') }}">Create new</a>
+{% endblock %}

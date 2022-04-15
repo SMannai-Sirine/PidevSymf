@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TaxiAero{% endblock %}
+
+{% block body %}
+    <h1>TaxiAero</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ taxi_aero.id }}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{{ taxi_aero.heure }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('taxi_aero_index') }}">back to list</a>
+
+    <a href="{{ path('taxi_aero_edit', {'id': taxi_aero.id}) }}">edit</a>
+
+    {{ include('taxi_aero/_delete_form.html.twig') }}
+{% endblock %}
