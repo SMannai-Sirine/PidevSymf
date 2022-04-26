@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservationvol{% endblock %}
+
+{% block body %}
+    <h1>Create new Reservationvol</h1>
+
+    {{ include('reservationvol/_form.html.twig') }}
+
+    <a href="{{ path('app_reservationvol_index') }}">back to list</a>
+{% endblock %}
+{% block listFront %}
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Mes Reservations</a></li>
+    <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+{% endblock %}
