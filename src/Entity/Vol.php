@@ -26,10 +26,10 @@ class Vol
      * @var string
      * @Assert\NotBlank(message="Ce champ ne doit pas rester vide")
      * @Assert\Length(
-     *     min=6,
-     *     max=6,
-     *     minMessage="La référence doit contenir exactement 6 caractères",
-     *     maxMessage="La référence doit contenir exactement 6 caractères")
+     *     min=3,
+     *     max=30,
+     *     minMessage="La référence doit contenir au min 3 caractères",
+     *     maxMessage="La référence doit contenir au max 30 caractères")
      * @ORM\Column(name="refAvion", type="string", length=30, nullable=false)
      */
     private $refavion;
@@ -38,10 +38,10 @@ class Vol
      * @var string
      * @Assert\NotBlank(message="Ce champ ne doit pas rester vide")
      * @Assert\Length(
-     *     min=6,
-     *     max=50,
-     *     minMessage="Le nom de la compagnie doit contenir au minimum 6 caractères",
-     *     maxMessage="Le nom de la compagnie doit contenir au maximum 50 caractères"
+     *     min=3,
+     *     max=30,
+     *     minMessage="Le nom de la compagnie doit contenir au min 3 caractères",
+     *     maxMessage="Le nom de la compagnie doit contenir au max 30 caractères"
      * )
      * @ORM\Column(name="compagnieAerienne", type="string", length=30, nullable=false)
      */
@@ -80,7 +80,7 @@ class Vol
     /**
      * @var int
      * @Assert\NotBlank(message="Ce champ ne doit pas rester vide")
-     * @Assert\Positive
+     * @Assert\Positive(message="Veuillez enter une valeur positive")
      * @ORM\Column(name="nbSieges", type="integer", nullable=false)
      */
     private $nbsieges;
@@ -88,7 +88,7 @@ class Vol
     /**
      * @var float
      * @Assert\NotBlank(message="Ce champ ne doit pas rester vide")
-     * @Assert\Positive
+     * @Assert\Positive(message="Veuillez enter une valeur positive")
      * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;

@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <th></th>
-                <td><img src="{{ qr_code_path('My QR Code') }}"/> </td>
+                <td><img src="{{ message }}"/> </td>
             </tr>
         </tbody>
     </table>
@@ -47,7 +47,7 @@
 
 {% endblock %}
 {% block listFront %}
-    <li class=""><a href="{{ path('app_reservationvol_index') }}">Mes Reservations</a></li>
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Vos réservations vols</a></li>
     <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
 {% endblock %}
 

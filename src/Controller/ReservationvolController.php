@@ -8,9 +8,6 @@ use App\Form\ReservationvolType;
 use App\Repository\ReservationVolRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\VolRepository;
-use App\Service\QrCodeService;
-use Endroid\QrCode\Builder\BuilderInterface;
-use Endroid\QrCodeBundle\Response\QrCodeResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +21,7 @@ class ReservationvolController extends AbstractController
     /**
      * @Route("/", name="app_reservationvol_index", methods={"GET"})
      */
-    public function index(VolRepository $volRepository, QrcodeService $qrcodeService,ReservationVolRepository $reservationVolRepository): Response
+    public function index(VolRepository $volRepository,ReservationVolRepository $reservationVolRepository): Response
     {
         $reservations= $reservationVolRepository->findBy(['idu'=>1]);
         foreach ($reservations as $item){
@@ -80,7 +77,7 @@ class ReservationvolController extends AbstractController
     /**
      * @Route("/{idreservationvol}", name="app_reservationvol_show", methods={"GET"})
      */
-    public function show(BuilderInterface $builder,QrCodeService $qrCodeService,UtilisateurRepository $userRepository,VolRepository $volRepository,Reservationvol $reservationvol): Response
+    public function show(UtilisateurRepository $userRepository,VolRepository $volRepository,Reservationvol $reservationvol): Response
     {
         $vol=$volRepository->find($reservationvol->getIdvol());
         $reservationvol->setVol($vol);
@@ -93,8 +90,12 @@ class ReservationvolController extends AbstractController
 
         $reservationvol->setQrcode($qrCode);*/
 
+       /* $qrcode=$qrcodeService->qrcodes("your reservation id is : #".$reservationvol->getIdreservationvol());
+*/
+        $test="your reservation id is : #".$reservationvol->getIdreservationvol();
         return $this->render('reservationvol/show.html.twig', [
             'reservationvol' => $reservationvol,
+            'message'=>$test
         ]);
     }
 

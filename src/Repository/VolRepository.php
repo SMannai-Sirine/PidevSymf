@@ -103,10 +103,10 @@ class VolRepository extends ServiceEntityRepository
     */
     public function findVolBy($requestString)
     {
-        $query = $this->createQueryBuilder('a')
-            ->where('a.compagnieaerienne LIKE :key')
-            ->orWhere('a.aerodepart LIKE :key')
-            ->orWhere('a.datedepart LIKE :key')
+        $query = $this->createQueryBuilder('v')
+            ->where('v.compagnieaerienne LIKE :key')
+            ->orWhere('v.aerodepart LIKE :key')
+            ->orWhere('v.datedepart LIKE :key')
             ->setParameter('key' , '%'.$requestString.'%')->getQuery();
         return $query->getResult();
     }

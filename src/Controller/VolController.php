@@ -109,10 +109,10 @@ class VolController extends AbstractController
     /**
      * @Route("/searchVolajax", name="ajaxVol")
      */
-    public function searchajax(ReservationVolRepository $reservationVolRepository,Request $request ,VolRepository $PartRepository)
+    public function searchajax(ReservationVolRepository $reservationVolRepository,Request $request ,VolRepository $volRepository)
     {
         $requestString=$request->get('searchValue');
-        $vols = $PartRepository->findVolBy($requestString);
+        $vols = $volRepository->findVolBy($requestString);
 
         foreach ($vols as $item){
             $reserva=$reservationVolRepository->findOneBy(['idvol'=>$item->getIdvol(),'idu'=>1]);
