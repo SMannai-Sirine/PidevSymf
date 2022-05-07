@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}TaxiAero{% endblock %}
 
@@ -23,4 +23,11 @@
     <a href="{{ path('taxi_aero_edit', {'id': taxi_aero.id}) }}">edit</a>
 
     {{ include('taxi_aero/_delete_form.html.twig') }}
+{% endblock %}
+{% block listvoiBack %}
+    <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
+    <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>
+    <li><a href="{{ path('taxi_index') }}"><i class="fa fa-file-text"></i> <span>Taxi</span></a></li>
+    <li><a href="{{ path('loc_voiture_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Voitures</span></a></li>
+    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-file-text"></i> <span>Voitures</span></a></li>
 {% endblock %}

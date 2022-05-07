@@ -47,4 +47,20 @@ class TaxiAeroRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function CountId()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $sql =
+            'SELECT id_taxi , COUNT(id_taxi) as res FROM `taxi_aero` GROUP BY(id_taxi)'
+            ;
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+
+    }
+
+
 }

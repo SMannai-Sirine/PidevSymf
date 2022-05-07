@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Pays;
 use App\Entity\Taxi;
 use App\Entity\TaxiAero;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,6 +27,9 @@ class TaxiAeroType extends AbstractType
                 'class'=>Taxi::class,
                 'choice_label'=>"matricule"
             ])
+            ->add('captcha', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptchaUserRegistration'
+            ));
         ;
     }
 

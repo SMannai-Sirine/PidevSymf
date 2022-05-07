@@ -7,5 +7,12 @@
 
     {{ include('taxi_aero/_form.html.twig') }}
 
-    <a href="{{ path('taxi_aero_index') }}">back to list</a>
+    <a href="{{ path('taxi_aero_index_user') }}">back to list</a>
+{% endblock %}
+{% block list %}
+
+    <li class=""><a href="{{ path('taxi_aero_index_user') }}">Mes Reservation Taxi</a></li>
+    <li class=""><a href="{{ path('loc_index_user') }}">Mes Reservation Voiture</a></li>
+    <li class=""><a href="{{ path('taxi_aero_new') }}">Reserver Taxi</a></li>
+    <li class=""><a href="{{ path('loc_voiture_new') }}">Reserver Voiture</a></li>
 {% endblock %}

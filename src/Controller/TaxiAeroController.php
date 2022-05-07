@@ -26,6 +26,16 @@ class TaxiAeroController extends AbstractController
     }
 
     /**
+     * @Route("/index", name="taxi_aero_index_user", methods={"GET"})
+     */
+    public function indexUser(TaxiAeroRepository $taxiAeroRepository): Response
+    {
+        return $this->render('taxi_aero/indexUser.html.twig', [
+            'taxi_aeros' => $taxiAeroRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="taxi_aero_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -39,7 +49,7 @@ class TaxiAeroController extends AbstractController
             $entityManager->persist($taxiAero);
             $entityManager->flush();
 
-            return $this->redirectToRoute('taxi_aero_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('taxi_aero_index_user', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('taxi_aero/new.html.twig', [
@@ -49,7 +59,7 @@ class TaxiAeroController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="taxi_aero_show", methods={"GET"})
+     * @Route("/{id}/show", name="taxi_aero_show", methods={"GET"})
      */
     public function show(TaxiAero $taxiAero): Response
     {
@@ -72,6 +82,26 @@ class TaxiAeroController extends AbstractController
             return $this->redirectToRoute('taxi_aero_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        return $this->render('taxi_aero/EditAdmin.html.twig', [
+            'taxi_aero' => $taxiAero,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/editUser", name="taxi_aero_edit_user", methods={"GET","POST"})
+     */
+    public function editUser(Request $request, TaxiAero $taxiAero): Response
+    {
+        $form = $this->createForm(TaxiAeroType::class, $taxiAero);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('taxi_aero_index_user', [], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('taxi_aero/edit.html.twig', [
             'taxi_aero' => $taxiAero,
             'form' => $form->createView(),
@@ -79,16 +109,24 @@ class TaxiAeroController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="taxi_aero_delete", methods={"POST"})
+     * @Route("/{id}/del", name="taxi_aero_delete", methods={"GET","POST"})
      */
     public function delete(Request $request, TaxiAero $taxiAero): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$taxiAero->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($taxiAero);
             $entityManager->flush();
-        }
+        return $this->redirectToRoute('taxi_aero_index');
+    }
 
-        return $this->redirectToRoute('taxi_aero_index', [], Response::HTTP_SEE_OTHER);
+    /**
+     * @Route("/{id}/del/User", name="taxi_aero_delete_user", methods={"GET","POST"})
+     */
+    public function deleteUser(Request $request, TaxiAero $taxiAero): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($taxiAero);
+        $entityManager->flush();
+        return $this->redirectToRoute('taxi_aero_index_user');
     }
 }

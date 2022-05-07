@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Voiture;
 use App\Form\VoitureType;
+use App\Repository\ReclamationRepository;
 use App\Repository\VoitureRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,7 +50,7 @@ class VoitureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="voiture_show", methods={"GET"})
+     * @Route("/{id}/show", name="voiture_show", methods={"GET"})
      */
     public function show(Voiture $voiture): Response
     {
@@ -79,7 +80,7 @@ class VoitureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="voiture_delete", methods={"POST"})
+     * @Route("/{id}/del", name="voiture_delete", methods={"POST"})
      */
     public function delete(Request $request, Voiture $voiture): Response
     {
@@ -91,4 +92,18 @@ class VoitureController extends AbstractController
 
         return $this->redirectToRoute('voiture_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/searchVoitureajax", name="ajaxVoiture")
+     */
+    public function searchajax(Request $request ,VoitureRepository $PartRepository)
+    {
+        $requestString=$request->get('searchValue');
+        $jeux = $PartRepository->findVoitureBy($requestString);
+
+        return $this->render('/voiture/ajax.html.twig', [
+            "voitures"=>$jeux,
+        ]);
+    }
+
 }

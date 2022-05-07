@@ -47,4 +47,19 @@ class LocVoitureRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function CountId()
+    {
+
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = '
+            SELECT id_voiture , COUNT(id_voiture) as res FROM `loc_voiture` GROUP BY(id_voiture)
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+
+    }
 }

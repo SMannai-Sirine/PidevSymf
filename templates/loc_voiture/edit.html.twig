@@ -11,3 +11,10 @@
 
     {{ include('loc_voiture/_delete_form.html.twig') }}
 {% endblock %}
+{% block list %}
+
+    <li class=""><a href="{{ path('taxi_aero_index_user') }}">Mes Reservation Taxi</a></li>
+    <li class=""><a href="{{ path('loc_index_user') }}">Mes Reservation Voiture</a></li>
+    <li class=""><a href="{{ path('taxi_aero_new') }}">Reserver Taxi</a></li>
+    <li class=""><a href="{{ path('loc_voiture_new') }}">Reserver Voiture</a></li>
+{% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Edit Taxi{% endblock %}
+{% block title %}Edit LocVoiture{% endblock %}
 
 {% block body %}
-    <h1>Edit Taxi</h1>
+    <h1>Edit LocVoiture</h1>
 
-    {{ include('taxi/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('loc_voiture/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a class="btn btn-success" href="{{ path('taxi_index') }}">back to list</a>
+    <a href="{{ path('loc_voiture_index') }}">back to list</a>
 
-    {{ include('taxi/_delete_form.html.twig') }}
+    {{ include('loc_voiture/_delete_form.html.twig') }}
 {% endblock %}
+
 {% block listvoiBack %}
     <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
     <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>

@@ -52,6 +52,7 @@ class TaxiAero
      * })
      */
     private $idTaxi;
+    private $captcha;
 
     /**
      * @return int
@@ -115,6 +116,22 @@ class TaxiAero
     public function setIdTaxi(Taxi $idTaxi): void
     {
         $this->idTaxi = $idTaxi;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCaptcha()
+    {
+        return $this->captcha;
+    }
+
+    /**
+     * @param mixed $captcha
+     */
+    public function setCaptcha($captcha): void
+    {
+        $this->captcha = $captcha;
     }
 
 

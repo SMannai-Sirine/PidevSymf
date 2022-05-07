@@ -14,7 +14,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            <!-- css files -->
     <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
     <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' /><!-- custom css -->
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet"><!-- fontawesome css -->
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet">
+			<link href="{{asset('stylecardVoiture.css')}}" rel="stylesheet"><!-- fontawesome css -->
 	<!-- //css files -->
 	
 	<link href="{{asset('css/css_slider.css')}}" type="text/css" rel="stylesheet" media="all">
@@ -54,6 +55,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li class=""><a href="services.html">Services</a></li>
 				<li class=""><a href="gallery.html">Gallery</a></li>
 				<li class="mr-2"><a href="contact.html">Contact</a></li>
+				{% block list %}
+				{% endblock %}
 				<li class=""><span><span class="fa fa-phone"></span> +12 34 3456 7890</span></li>
 			</ul>
 		</nav>
