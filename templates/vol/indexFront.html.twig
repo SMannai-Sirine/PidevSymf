@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vols{% endblock %}
+
+{% block body %}
+    <h1>Tout les vols</h1>
+    <input type="text" class="form-control" id="advanced" placeholder="Type here...">
+                <div id="all">
+                    {% include 'vol/ajax.html.twig' %}
+                </div>
+
+                <script
+                        src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+                </script>
+                <script>
+                    $( document ).ready(function() {
+                        var currentRequest = null;
+                        $("#advanced").keyup(function(e){
+                            /* La variable value va prendre la valeur insérer dans le champ de texte
+                            afin d’effectuer la recherche */
+                            var value = $(this).val();
+                            if(currentRequest != null) {
+                                currentRequest.abort();
+                            }
+                            /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                            « search » pour faire la recherche */
+                            currentRequest = $.ajax({
+                                url : "{{ path('ajaxVol') }}",
+                                type : 'GET',
+                                data: {
+                                    'searchValue' : value
+                                },
+                                success : function(retour)
+                                {
+                                    $('#all').html(retour);
+                                },
+                            });
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+
+
+
+{% endblock %}
+{% block listFront %}
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Vos Réservations vols</a></li>
+    <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+{% endblock %}
+
+{% block logo %} <h1> <a href="index.html">TourToDo</a></h1>{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos réservations vols{% endblock %}
+
+{% block body %}
+    <h1>Vos réservations vols</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('asset/stylesheet.css') }}">
+
+    <div class="container-fluid">
+        <div class="row">
+            {% for reservationvol in reservationvols %}
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <div id="containervol">
+
+                        <div class="product-details-vols">
+
+                            <h1>Réservation :</h1>
+                            <div class="">
+
+                                <p class="information">{{ reservationvol.vol.datedepart|date }}</p>
+                                <ul>
+                                    <li><strong>Compagnie aérienne :</strong>{{ reservationvol.vol.compagnieaerienne }} </li>
+                                    <li><strong>Aéroport de départ : </strong>{{ reservationvol.vol.aerodepart }}</li>
+                                    <li><strong>Aéroport d'arrivé : </strong>{{ reservationvol.vol.aeroarrive }}</li>
+                                    <li><strong>Durée du vol : </strong>{{ reservationvol.vol.duree }}</li>
+
+                                </ul>
+                            </div>
+
+
+
+                            <div class="control">
+                                 {% if reservationvol.vol.datedepart > date %}
+                                    {{ include('reservationvol/_delete_form.html.twig') }}
+                                 {% else %}
+                                     <h6>Délais pour annuler dépassé</h6>
+                                {% endif %}
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{#  {% block body %}
+    <h1>Vos réservations vols</h1>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('asset/stylesheet.css') }}">
+    {% for reservationvol in reservationvols %}
+<div id="container">
+
+        <div class="product-details">
+
+            <h1>Réservation :</h1>
+
+
+            <p class="information">{{ reservationvol.vol.datedepart|date }}</p>
+
+
+
+            <div class="control">
+
+                <button class="btn btn-success">
+                    <a CLASS="" href="{{ path('app_reservationvol_show', {'idreservationvol': reservationvol.idreservationvol}) }}"><span>show</span></a>
+
+                </button>
+                  <button class="btn btn-info">
+                    <a href="{{ path('app_reservationvol_edit', {'idreservationvol': reservationvol.idreservationvol}) }}"><span>Edit</span></a>
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product-image">
+            <div class="info">
+                <h2> Description</h2>
+                <ul>
+                    <li><strong>Compagnie aérienne :</strong>{{ reservationvol.vol.compagnieaerienne }} </li>
+                    <li><strong>Aéroport de départ : </strong>{{ reservationvol.vol.aerodepart }}</li>
+                    <li><strong>Aéroport d'arrivé : </strong>{{ reservationvol.vol.aeroarrive }}</li>
+                    <li><strong>Durée du vol : </strong>{{ reservationvol.vol.duree }}</li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+
+{% endblock %}#}
+{% block listFront %}
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Vos Réservations vols</a></li>
+    <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+{% endblock %}
+
+{% block logo %} <h1> <a href="index.html">TourToDo</a></h1>{% endblock %}

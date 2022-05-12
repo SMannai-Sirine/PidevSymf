@@ -1,0 +1,54 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Vol index{% endblock %}
+
+{% block body %}
+    <h1>Liste des vols</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Idvol</th> #}
+                <th>Référence de l'avion</th>
+                <th>Compagnie aérienne</th>
+                <th>Aéroport de départ</th>
+                <th>Aéroport d'arrivé</th>
+                <th>Date de départ</th>
+                <th>Durée du vol</th>
+                <th>Nombre de sièges disponible</th>
+                <th>Prix</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vol in vols %}
+            <tr>
+                {# <td>{{ vol.idvol }}</td> #}
+                <td>{{ vol.refavion }}</td>
+                <td>{{ vol.compagnieaerienne }}</td>
+                <td>{{ vol.aerodepart }}</td>
+                <td>{{ vol.aeroarrive }}</td>
+                <td>{{ vol.datedepart ? vol.datedepart|date('Y-m-d') : '' }}</td>
+                <td>{{ vol.duree }}</td>
+                <td>{{ vol.nbsieges }}</td>
+                <td>{{ vol.prix }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_vol_show', {'idvol': vol.idvol}) }}">Voir</a>
+                    <a class="btn btn-info" href="{{ path('app_vol_edit', {'idvol': vol.idvol}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('app_vol_new') }}">Ajouter un vol</a>
+{% endblock %}
+
+{% block list %}
+    <li><a href="{{ path('app_vol_index') }}"><i class="fa fa-plane"></i> <span>Vols</span></a> </li>
+    <li><a href="{{ path('app_reservationvol_Admin') }}"><i class="fa fa-ticket"></i> <span>Réservations vols</span></a> </li>
+{% endblock %}

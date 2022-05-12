@@ -1,0 +1,47 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}Hello HomeAdminController!{% endblock %}
+
+
+
+
+{% block body %}
+<table>
+ <tr>
+    <th>nom reservation</th> &nbsp;&nbsp;&nbsp;
+     <th>prix</th> &nbsp;&nbsp;&nbsp;&nbsp;
+     <th>date</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <th>supprimer</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+
+   
+    
+  </tr>
+{% for c in Reservation %}
+
+     <tr>
+   
+      <td>{{c.nomreservation}}</td>
+      
+      <td>{{c.date|date("m/d/Y")}}</td>
+      <td><button class="btn btn-info" > <a href="{{ path('suppressionR', {'id': c.id }) }}" style="color:white">supprimer</a></button></td>
+     
+      
+      
+      </tr>
+
+     
+{% endfor %}
+<div id="calendrier">
+</div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+   window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'timeGridWeek',
+        })
+        calendar.render()
+</script>
+{% endblock %}

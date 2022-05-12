@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+
+{% block body %}{% block javascript %} {% endblock %}  
+
+     <br><br><br>
+
+ <br><br>
+ 
+<style>
+.boxtttt{
+	
+		transition: 1s;
+
+	}
+	.boxtttt img{
+		display: block;
+	border-radius: 5px;
+	}
+	.boxtttt:hover{
+		transform: scale(1.1);
+		z-index: 2;
+	}
+	</style>
+   
+
+<div class="b-example-divider" ></div>
+
+
+
+<!-- /input-group -->
+  
+  
+  
+
+
+
+
+<section class="food_section layout_padding">
+
+
+    <div class="container">
+
+
+         <div class="heading_container heading_center">
+           <h2> Reservations </h2>
+       
+          <!-- /input-group -->
+         </div>
+        </div>
+
+          
+
+      <br><br><br>
+ <br><br>
+
+
+     <section class="home-about-area">
+<button class="btn btn-info" > <a href="{{ path('tri') }}" style="color:white">trier</a></button>
+
+
+		<table>
+ <tr>
+    <th>nom reservation</th> &nbsp;&nbsp;&nbsp;
+    
+     <th>date</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  
+
+   
+    
+  </tr>
+{% for c in Reservation %}
+
+     <tr>
+   
+      <td>{{c.nomreservation}}</td>
+      
+      <td>{{c.date|date("m/d/Y")}}</td>
+      
+      <td><button class="btn btn-info" > <a href="{{ path('modifierR', {'id': c.id }) }}" style="color:white">modifier</a></button></td>
+      
+      
+      </tr>
+
+     
+{% endfor %}
+
+
+
+    </section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

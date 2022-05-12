@@ -1,0 +1,98 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Pays index{% endblock %}
+
+{% block body %}
+
+
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Exam Toppers</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div>
+                                    <h1>Statistiques</h1>
+                                    <canvas id="VoitureChart" width="400" height="100"></canvas>
+
+                                    </div>
+                                    <div>
+                                        <h1>Statistiques</h1>
+                                        <canvas id="TaxiChart" width="400" height="100"></canvas>
+                                    </div>
+                                    <script src="{{ asset('Chart.min.js') }}" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
+
+                                    <script>
+                                        let tabcolor=[];
+
+                                        for (let pas = 0; pas < {{ VoituresModels|length }}; pas++) {
+                                            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+                                            tabcolor[pas]="#"+randomColor;
+
+                                        }
+                                        let categories = document.querySelector('#VoitureChart')
+                                        let categoriesTaxi = document.querySelector('#TaxiChart')
+                                        let categGraph = new Chart(categories, {
+                                            type: "bar",
+                                            data: {
+                                                labels: {{ VoituresModels|raw }},
+                                                datasets: [{
+                                                    label: "Voiture",
+                                                    data: {{ VoitureRes|raw }},
+                                                    backgroundColor: tabcolor,
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+                                        let categGraphTaxi = new Chart(categoriesTaxi, {
+                                            type: "bar",
+                                            data: {
+                                                labels: {{ TaxiMatricules|raw }},
+                                                datasets: [{
+                                                    label: "Taxi",
+                                                    data: {{ TaxRes|raw }},
+                                                    backgroundColor: tabcolor,
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        })
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+{% endblock %}
+
+{% block listvoiBack %}
+    <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
+    <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>
+    <li><a href="{{ path('taxi_index') }}"><i class="fa fa-file-text"></i> <span>Taxi</span></a></li>
+    <li><a href="{{ path('loc_voiture_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Voitures</span></a></li>
+    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-file-text"></i> <span>Voitures</span></a></li>
+{% endblock %}

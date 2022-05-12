@@ -1,0 +1,16 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New Vol{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un vol</h1>
+
+    {{ include('vol/_form.html.twig') }}
+
+    <a class="btn btn-info" href="{{ path('app_vol_index') }}">Retourner à la liste</a>
+{% endblock %}
+
+{% block list %}
+    <li><a href="{{ path('app_vol_index') }}"><i class="fa fa-plane"></i> <span>Vols</span></a> </li>
+    <li><a href="{{ path('app_reservationvol_Admin') }}"><i class="fa fa-ticket"></i> <span>Réservations Vols</span></a> </li>
+{% endblock %}

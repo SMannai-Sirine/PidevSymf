@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LocVoiture index{% endblock %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="row">
+
+
+            {% for loc_voiture in loc_voitures %}
+
+
+                <div class="col-sm-12">
+            <div class="product-details" id="containers">
+                <h1> {{ loc_voiture.idPays.nom }}</h1>
+                <h3>{{ loc_voiture.idVoiture.model }}</h3>
+                <p class="information">Date Reservation: {{ loc_voiture.dateRes|date}} <br>
+                Duree Reservation : {{ loc_voiture.dureeRes}} <br> {% if loc_voiture.remise == true %}   Remise : {{ loc_voiture.tauxRemise }} % {% endif %}
+                </p>
+                <a class="btn btn-success" href="{{ path('loc_voiture_edit_user',{'id':loc_voiture.id}) }}">Edit</a>
+                <a class="btn btn-danger" href="{{ path('loc_voiture_delete_user',{'id':loc_voiture.id}) }}">Delete</a>
+            </div>
+
+
+                </div>
+
+
+    {% else %}
+
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+            </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block list %}
+
+    <li class=""><a href="{{ path('taxi_aero_index_user') }}">Mes Reservation Taxi</a></li>
+    <li class=""><a href="{{ path('loc_index_user') }}">Mes Reservation Voiture</a></li>
+    <li class=""><a href="{{ path('taxi_aero_new') }}">Reserver Taxi</a></li>
+    <li class=""><a href="{{ path('loc_voiture_new') }}">Reserver Voiture</a></li>
+{% endblock %}
