@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Voiture{% endblock %}
+
+{% block body %}
+    <h1>Voiture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voiture.id }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ voiture.model }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ voiture.type }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ voiture.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('voiture_index') }}">back to list</a>
+
+    <a class="btn btn-success" href="{{ path('voiture_edit', {'id': voiture.id}) }}">edit</a>
+
+    {{ include('voiture/_delete_form.html.twig') }}
+{% endblock %}
+{% block listvoiBack %}
+    <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
+    <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>
+    <li><a href="{{ path('taxi_index') }}"><i class="fa fa-file-text"></i> <span>Taxi</span></a></li>
+    <li><a href="{{ path('loc_voiture_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Voitures</span></a></li>
+    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-file-text"></i> <span>Voitures</span></a></li>
+{% endblock %}

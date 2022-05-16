@@ -1,0 +1,65 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello HomeAdminController!{% endblock %}
+
+{% block body %}
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row" style="display: flex;align-items: center;justify-content: center">
+                <div class="col-md-6">
+                    <div class="card-box">
+                        <h4 class="m-t-0 m-b-30 header-title">Modifier Hotel</h4>
+                        {{form_start(f)}}
+
+                        <div class="form-group">
+                            <label for="name">nom_hotel</label>
+                            {{ form_widget(f.nom_hotel, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">nbetoile</label>
+                            {{ form_widget(f.nbetoile, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">nbchambre</label>
+                            {{ form_widget(f.nbchambre, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">nbrestaurant</label>
+                            {{ form_widget(f.nbrestaurant, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">nbpiscine</label>
+                            {{ form_widget(f.nbpiscine, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">adresse_hotel</label>
+                            {{ form_widget(f.adresse_hotel, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">villehotel</label>
+                            {{ form_widget(f.villehotel, {'attr':{'class':'form-control'}})}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">image</label>
+                            {{ form_widget(f.image, {'attr':{'class':'form-control'}})}}
+                        </div>
+
+                        
+
+                        {{ form_end(f) }}
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New Voiture{% endblock %}
+
+{% block body %}
+    <h1>Create new Voiture</h1>
+
+    {{ include('voiture/_form.html.twig') }}
+
+    <a class="btn btn-success" href="{{ path('voiture_index') }}">back to list</a>
+{% endblock %}
+
+{% block listvoiBack %}
+    <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
+    <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>
+    <li><a href="{{ path('taxi_index') }}"><i class="fa fa-file-text"></i> <span>Taxi</span></a></li>
+    <li><a href="{{ path('loc_voiture_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Voitures</span></a></li>
+    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-file-text"></i> <span>Voitures</span></a></li>
+{% endblock %}

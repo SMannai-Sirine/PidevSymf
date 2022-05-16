@@ -1,0 +1,43 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello HomeAdminController!{% endblock %}
+
+{% block body %}
+<table>
+ <tr>
+    <th>nom hotel</th> &nbsp;&nbsp;&nbsp;
+     <th>nombre etoiles </th> &nbsp;&nbsp;&nbsp;&nbsp;
+     <th>nb chambres </th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <th>nbrestaurants</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <th>nbpicines</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <th>Adresse hotel</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <th>Villehotel</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <th>modifier</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <th>supprimer</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <th>Ajouter</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <th>Reservations</th> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    
+  </tr>
+{% for c in Hotel %}
+
+     <tr>
+   
+      <td>{{c.getNomHotel()}}</td>
+      <td>{{c.nbetoile}}</td>
+      <td>{{c.nbchambre}}</td>
+      <td>{{c.nbrestaurant}}</td>
+      <td>{{c.nbpiscine}}</td>
+      <td>{{c.getAdresseHotel()}}</td>
+      <td>{{c.villehotel}}</td>
+      <td> <button class="btn btn-info" > <a href="{{ path('modifierh', {'id': c.id}) }}" style="color:white">modifier</a></button></td>
+      <td> <button class="btn btn-info" > <a href="{{ path('suppressionhotel', {'id': c.id}) }}" style="color:white">supprimer</a></button></td>
+      <td> <button class="btn btn-info" > <a href="{{ path('addh', {'id': c.id}) }}" style="color:white">ajouter hotel</a></button></td>
+      <td>  <button class="btn btn-info" > <a href="{{ path('afficherreservation')}}" style="color:white">reservation</a></button></td>
+      
+      
+      </tr>
+
+     
+{% endfor %}
+{% endblock %}

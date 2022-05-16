@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tour to Do{% endblock %}
+
+{% block body %}
+
+  <div>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+        
+    {% endfor %}
+    </div>
+
+{% include "home/welcome.html.twig" %}
+
+{% endblock %}

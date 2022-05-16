@@ -1,0 +1,50 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Voiture index{% endblock %}
+
+{% block body %}
+    <h1>Voiture index</h1>
+    <div id="all">
+        {% include '/voiture/ajax.html.twig' %}
+    </div>
+
+
+    <a class="btn btn-success" href="{{ path('voiture_new') }}">Create new</a>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#advanced").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('ajaxVoiture') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}
+{% block listvoiBack %}
+    <li><a href="{{ path('pays_index') }}"><i class="fa fa-file-text"></i> <span>Gestion Pays</span></a></li>
+    <li><a href="{{ path('taxi_aero_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Taxi</span></a></li>
+    <li><a href="{{ path('taxi_index') }}"><i class="fa fa-file-text"></i> <span>Taxi</span></a></li>
+    <li><a href="{{ path('loc_voiture_index') }}"><i class="fa fa-file-text"></i> <span>Reservation Voitures</span></a></li>
+    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-file-text"></i> <span>Voitures</span></a></li>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservationvol{% endblock %}
+
+{% block body %}
+    <h1>Votre réservation vol</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Email</th>
+                <td>{{ reservationvol.user.Email }}</td>
+            </tr>
+            <tr>
+                <th>Date de départ</th>
+                <td>{{ reservationvol.vol.datedepart|date }}</td>
+            </tr>
+            <tr>
+                <th>Aéroport de départ</th>
+                <td>{{ reservationvol.vol.aerodepart }}</td>
+            </tr>
+            <tr>
+                <th>Aéroport d'arrivé</th>
+                <td>{{ reservationvol.vol.aeroarrive}}</td>
+            </tr>
+            <tr>
+                <th>Durée du vol</th>
+                <td>{{ reservationvol.vol.duree}}</td>
+            </tr>
+            {#  <tr>
+                <th></th>
+                <td><img src="{{ message }}"/> </td>
+            </tr>#}
+        </tbody>
+    </table>
+
+    {{ include('reservationvol/_delete_form.html.twig') }}
+    <a class="btn btn-success" href="{{ path('app_reservationvol_index') }}">Retouner à la liste</a>
+
+    {#  <a href="{{ path('app_reservationvol_edit', {'idreservationvol': reservationvol.idreservationvol}) }}">edit</a>#}
+
+
+{% endblock %}
+{% block listFront %}
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Vos réservations vols</a></li>
+    <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+{% endblock %}
+
+
+{% block logo %} <h1> <a href="index.html">TourToDo</a></h1>{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventUserController!{% endblock %}
+
+{% block body %}
+<section>
+
+    <div class="container">
+        <div class="row">
+            {% for evenement in evenements %}
+                {% set test = 0 %}
+            <div class="col-sm-6 col-md-4">
+
+                <div class="thumbnail">
+
+
+
+                    <a><img src="{{ asset('Front/images/' ~ evenement.photo) }}"
+                                        alt="" style="width:200px; height: 200px ">
+                                </a>
+                    <h4>{{ evenement.intitule }}</h4>
+                </a>
+                <p class="price">{{ evenement.dateevent ? evenement.dateevent|date('Y-m-d') : '' }}</p>
+
+               <p>
+
+                    <a href="">Réserver</a>  &nbsp;  &nbsp;
+                    <a href="{{path('app_eventuser_show',{'idevent': evenement.idevent}) }}">Détails</a>
+                   
+
+                   </p>
+                </div> <!-- End of /.products -->
+                        </li>
+
+                    </ul>
+            </div> <!-- End of /.products -->
+             
+            {% endfor %}
+        </div> <!-- End of /.col-md-3 -->
+   
+
+    </div> <!-- End of /.row -->
+      <br>
+              <br>
+    </section>
+  
+{% endblock %}

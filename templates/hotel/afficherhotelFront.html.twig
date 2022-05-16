@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+
+{% block body %}{% block javascript %} {% endblock %}  
+
+     <br><br><br>
+
+ <br><br>
+ 
+<style>
+.boxtttt{
+	
+		transition: 1s;
+
+	}
+	.boxtttt img{
+		display: block;
+	border-radius: 5px;
+	}
+	.boxtttt:hover{
+		transform: scale(1.1);
+		z-index: 2;
+	}
+	</style>
+   
+
+<div class="b-example-divider" ></div>
+
+
+
+<!-- /input-group -->
+  
+  
+  
+
+
+
+
+<section class="food_section layout_padding">
+
+
+    <div class="container">
+
+
+         <div class="heading_container heading_center">
+           <h2> Hotels </h2>
+       
+          <!-- /input-group -->
+         </div>
+        </div>
+
+          
+
+      <br><br><br>
+ <br><br>
+
+
+     <section class="home-about-area">
+
+				<div class="container-fluid">				
+		<div class="row justify-content-center align-items-center">				
+             {% for p in Hotels %}
+          	<div class="col-lg-6 no-padding home-about-left">
+            <div class="boxtttt">
+			<img  src="/uploads/{{p.image}}" id="img"  alt="Image" 
+              style =" width : 500px  ">   <br><br>  <br><br>
+						</div>
+            	</div>
+          
+					<div class="col-lg-6 no-padding home-about-right">
+                   
+                             <a style="margin-left:10%"  >{{ p.getNomHotel()}} </a> <br>
+                       <a style="margin-left:10%"  >{{ p.nbetoile}} </a> <br>
+                         <a style="margin-left:10%"  >{{ p.nbchambre}} </a> <br>
+                           <a style="margin-left:10%"  >{{ p.nbrestaurant}} </a> <br>
+                             <a style="margin-left:10%"  >{{ p.nbpiscine}} </a> <br>
+                               <a style="margin-left:10%" href="{{ path('map') }}"  >{{ p.getAdresseHotel()}} </a> <br>
+
+
+                         
+                      
+                        <button class="btn btn-info" > <a href="{{ path('addreservation', {'idhotel': p }) }}" style="color:white">ajouter reservation</a></button>
+                       
+
+    
+						</div>
+		
+                                   
+    {% endfor %}	
+
+					</div>
+
+				</div>
+ 
+          </div>  
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
