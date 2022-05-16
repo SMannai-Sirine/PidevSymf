@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+    <h1>Evenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idevent</th>
+                <td>{{ evenement.idevent }}</td>
+            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ evenement.intitule }}</td>
+            </tr>
+            <tr>
+                <th>Paysevent</th>
+                <td>{{ evenement.paysevent }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ evenement.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Dateevent</th>
+                <td>{{ evenement.dateevent ? evenement.dateevent|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Typeevent</th>
+                <td>{{ evenement.typeevent }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ evenement.photo }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ evenement.prix }}</td>
+            </tr>
+            <a href="{{ path('app_eventuser_show_map', {'idevent': evenement.idevent}) }}">location</a>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_event_user') }}">back to list</a>
+{% endblock %}

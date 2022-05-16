@@ -1,0 +1,59 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Vol{% endblock %}
+
+{% block body %}
+    <h1>Vol</h1>
+
+    <table class="table">
+        <tbody>
+            {# <tr>
+                <th>Idvol</th>
+                <td>{{ vol.idvol }}</td>
+            </tr>#}
+            <tr>
+                <th>Référence de l'avion</th>
+                <td>{{ vol.refavion }}</td>
+            </tr>
+            <tr>
+                <th>Compagnie aérienne</th>
+                <td>{{ vol.compagnieaerienne }}</td>
+            </tr>
+            <tr>
+                <th>Aéroport de départ</th>
+                <td>{{ vol.aerodepart }}</td>
+            </tr>
+            <tr>
+                <th>Aéroport d'arrivé</th>
+                <td>{{ vol.aeroarrive }}</td>
+            </tr>
+            <tr>
+                <th>Date de départ</th>
+                <td>{{ vol.datedepart ? vol.datedepart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Durée du vol</th>
+                <td>{{ vol.duree }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de sièges disponible</th>
+                <td>{{ vol.nbsieges }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ vol.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_vol_index') }}">Retourner à la liste</a>
+
+    <a class="btn btn-info" href="{{ path('app_vol_edit', {'idvol': vol.idvol}) }}">Modifier</a>
+
+    {{ include('vol/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block list %}
+    <li><a href="{{ path('app_vol_index') }}"><i class="fa fa-plane"></i> <span>Vols</span></a> </li>
+    <li><a href="{{ path('app_reservationvol_Admin') }}"><i class="fa fa-ticket"></i> <span>Réservations vols</span></a> </li>
+{% endblock %}

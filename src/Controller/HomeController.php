@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="app_home")
+     * @Route("/", name="app_home")
      */
     public function index(): Response
     {
@@ -17,4 +17,16 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+    /**
+     * @Route("/admin", name="app_homeadmin")
+     */
+    public function indexa(): Response
+    {
+        return $this->render('home_admin/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+
+
 }

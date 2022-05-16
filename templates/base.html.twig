@@ -1,135 +1,126 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Commute Travel Category Flat Bootstrap Responsive Web Template | Home :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="keywords" content="Commute Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+    <title>Commute Travel Category Flat Bootstrap Responsive Web Template | Home :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Commute Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-           <!-- css files -->
-    <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
-    <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' /><!-- custom css -->
-    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet"><!-- fontawesome css -->
-	<!-- //css files -->
-	
-	<link href="{{asset('css/css_slider.css')}}" type="text/css" rel="stylesheet" media="all">
+    {% block stylesheets %}
+        <!-- css files -->
+        <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+        <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css' /><!-- custom css -->
+        <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet"><!-- fontawesome css -->
+                                                                            <!-- //css files -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<!-- google fonts -->
-    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900" rel="stylesheet">
-	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-	<!-- //google fonts -->
-        {% endblock %}
+        <link href="{{asset('css/css_slider.css')}}" type="text/css" rel="stylesheet" media="all">
 
-        {% block javascripts %}
-           <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
+        <!-- google fonts -->
+        <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+        <!-- //google fonts -->
+    {% endblock %}
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-	
-        {% endblock %}
-    </head>
-    <body>
-    <header>
-	<div class="container">
-		<!-- nav -->
-		<nav class="py-md-4 py-3 d-lg-flex">
-			<div id="logo">
-				<h1> <a href="index.html">Commute</a></h1>
-			</div>
-			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
-			<input type="checkbox" id="drop" />
-			<ul class="menu mt-lg-3 ml-auto">
-				<li class="active"><a href="index.html">Home</a></li>
-				<li class=""><a href="about.html">About Us</a></li>
-				<li class=""><a href="services.html">Services</a></li>
-				<li class=""><a href="gallery.html">Gallery</a></li>
-				<li class="mr-2"><a href="contact.html">Contact</a></li>
-				<li class=""><span><span class="fa fa-phone"></span> +12 34 3456 7890</span></li>
-			</ul>
-		</nav>
-		<!-- //nav -->
-	</div>
-</header>
-           <!-- banner -->
+    {% block javascripts %}
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        </script>
+
+    {% endblock %}
+</head>
+<body>
+
+{% include "base/nav.html.twig" %}
+
+<!-- banner -->
 <section class="banner_w3lspvt" id="home">
-	<div class="csslider infinity" id="slider1">
-		<input type="radio" name="slides" checked="checked" id="slides_1" />
-		<input type="radio" name="slides" id="slides_2" />
-		<input type="radio" name="slides" id="slides_3" />
-		<input type="radio" name="slides" id="slides_4" />
-		<ul>
-			<li>
-				<div class="banner-top">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
-								<h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
-								<a href="about.html" class="button-style mt-4">Read More</a>
-								</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top1">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
-								<h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
-								<a href="about.html" class="button-style mt-4">Read More</a>
-								</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top2">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
-								<h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
-								<a href="about.html" class="button-style mt-4">Read More</a>
-								</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="banner-top3">
-					<div class="overlay">
-						<div class="container">
-							<div class="w3layouts-banner-info">
-								<h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
-								<h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
-								<a href="about.html" class="button-style mt-4">Read More</a>
-								</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div class="arrows">
-			<label for="slides_1"></label>
-			<label for="slides_2"></label>
-			<label for="slides_3"></label>
-			<label for="slides_4"></label>
-		</div>
-	</div>
+    <div class="csslider infinity" id="slider1">
+        <input type="radio" name="slides" checked="checked" id="slides_1" />
+        <input type="radio" name="slides" id="slides_2" />
+        <input type="radio" name="slides" id="slides_3" />
+        <input type="radio" name="slides" id="slides_4" />
+        <ul>
+            <li>
+                <div class="banner-top">
+                    <div class="overlay">
+                        <div class="container">
+                            <div class="w3layouts-banner-info">
+                                <h3 class="text-wh"> Trip ssssssssssssss Exceptional  <span>Adventure</span></h3>
+                                <h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
+                                <a href="about.html" class="button-style mt-4">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-top1">
+                    <div class="overlay">
+                        <div class="container">
+                            <div class="w3layouts-banner-info">
+                                <h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
+                                <h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
+                                <a href="about.html" class="button-style mt-4">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-top2">
+                    <div class="overlay">
+                        <div class="container">
+                            <div class="w3layouts-banner-info">
+                                <h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
+                                <h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
+                                <a href="about.html" class="button-style mt-4">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="banner-top3">
+                    <div class="overlay">
+                        <div class="container">
+                            <div class="w3layouts-banner-info">
+                                <h3 class="text-wh"> Trip Now Exceptional  <span>Adventure</span></h3>
+                                <h4 class="text-wh"> vestibulum consequat. Curabitur mauris justo</h4>
+                                <a href="about.html" class="button-style mt-4">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="arrows">
+            <label for="slides_1"></label>
+            <label for="slides_2"></label>
+            <label for="slides_3"></label>
+            <label for="slides_4"></label>
+        </div>
+    </div>
 </section>
+<!--/ab -->
 
-        {% block body %}{% endblock %}
-    </body>
+{% block body %}
+{% endblock %}
+{% include "base/footer.html.twig" %}
+
+</body>
 </html>

@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservationvol index{% endblock %}
+
+{% block listFront %}
+    <li class=""><a href="{{ path('app_reservationvol_index') }}">Mes Reservations</a></li>
+    <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+{% endblock %}

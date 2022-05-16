@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block list %}
+    <li><a href="{{ path('app_vol_index') }}"><i class="fa fa-plane"></i> <span>Vols</span></a> </li>
+    <li><a href="{{ path('app_reservationvol_Admin') }}"><i class="fa fa-ticket"></i> <span>Réservations vols</span></a> </li>
+{% endblock %}
+
+{% block title %}Reservationvol index{% endblock %}
+
+{% block body %}
+    <h1>Liste des réservations de vols</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Référence réservation vol</th>
+            <th>Utilisateur</th>
+            <th>Référence du vol</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservationvol in reservationvols %}
+            <tr>
+                <td>{{ reservationvol.idreservationvol }}</td>
+                <td>{{ reservationvol.idu }}</td>
+                <td>{{ reservationvol.idvol }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_reservationvol_show_admin', {'idreservationvol': reservationvol.idreservationvol}) }}">Voir</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

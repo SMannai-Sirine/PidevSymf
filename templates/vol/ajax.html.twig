@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('asset/stylesheet.css') }}">
+
+<div class="container-fluid">
+    <div class="row">
+        {% for vol in vols %}
+        {% if vol.nbsieges>0 %}
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <div id="containervol">
+
+                    <div class="product-details-vols">
+
+                        {#<h1>Reservation :</h1>#}
+                        <div class="">
+                            <h2> Description du vol</h2>
+                            <ul>
+                                <li><strong>Compagnie aérienne :</strong>{{ vol.compagnieaerienne }} </li>
+                                <li><strong>Aéroport de départ : </strong>{{ vol.aerodepart }}</li>
+                                <li><strong>Aéroport d'arrivé : </strong>{{ vol.aeroarrive }}</li>
+                                <li><strong>Date de départ : </strong>{{ vol.datedepart|date }}</li>
+                                <li><strong>Durée du vol : </strong>{{ vol.duree }}</li>
+
+                            </ul>
+                        </div>
+
+
+                        {% if app.user %}
+
+                        <div class="control">
+                            {% if vol.isReserved==0 %}
+                                <button class="btn btn-info">
+                                        <a CLASS="" href="{{ path('app_reservationvol_new', {'idvol': vol.idvol}) }}"><span>Réserver</span></a>
+
+                                </button>
+                            {% else %}
+                                <h5>Déjà Réservé</h5>
+                            {% endif %}
+                     {% endif %}
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+{% endfor %}

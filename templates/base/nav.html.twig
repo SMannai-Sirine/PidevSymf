@@ -1,0 +1,40 @@
+
+  <!-- End Header -->
+
+<header>
+
+  <div class="container">
+    <!-- nav -->
+    <nav class="py-md-4 py-3 d-lg-flex">
+      <div id="logo">
+        <h1> <a href="{{ path('app_home') }}">Tour To DO</a></h1>
+      </div>
+      <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+      <input type="checkbox" id="drop" />
+      <ul class="menu mt-lg-3 ml-auto">
+        <li ><a href="{{ path('app_home') }}">Home</a></li>
+        <li class=""><a href="{{ path('app_event_user') }}">Evenements</a></li>
+        <li class=""><a href="{{ path('app_vol_index_front') }}">Vols</a></li>
+        {% if app.user %}
+          <div class="subnav">
+            <button class="subnavbtn">Reservation <i class="fa fa-caret-down"></i></button>
+            <div class="subnav-content">
+              <li class=""><a href="{{ path('taxi_aero_index_user') }}">Mes Reservation Taxi</a></li>
+              <li class=""><a href="{{ path('loc_index_user') }}">Mes Reservation Voiture</a></li>
+              <li class=""><a href="{{ path('taxi_aero_new') }}">Reserver Taxi</a></li>
+              <li class=""><a href="{{ path('loc_voiture_new') }}">Reserver Voiture</a></li>
+              <li class=""><a href="{{ path('app_reservationvol_index') }}">Vos Réservations vols</a></li>
+            </div>
+          </div>
+
+          <li><a href="{{ path('app_logout') }}">logout</a></li>
+        {% else %}
+          <li><a href="{{ path('app_login') }}">Signin</a></li>
+          <li><a href="{{ path('app_register') }}">Register</a></li>
+
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- //nav -->
+  </div>
+</header>
